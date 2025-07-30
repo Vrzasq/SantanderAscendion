@@ -9,12 +9,12 @@ public class GetBestStoriesQueryHandler(
     IHackerNewsClient hackerNewsClient,
     ILogger<GetBestStoriesQueryHandler> logger
     )
-    : IRequestHandler<GetBestStoriesQuery, GetBestStoriesQueryResult>
+    : IRequestHandler<GetBestStoriesQuery, IEnumerable<StoryItem>>
 {
-    public async Task<GetBestStoriesQueryResult> Handle(GetBestStoriesQuery request, CancellationToken ct)
+    public async Task<IEnumerable<StoryItem>> Handle(GetBestStoriesQuery request, CancellationToken ct)
     {
         if (request.Count <= 0)
-            return new GetBestStoriesQueryResult([]);
+            return [];
 
         var topStories = (await hackerNewsClient.GetTopStoriesAsync(ct)).ToArray();
         var detailedStories = await GetDetailedStoriesAsync(topStories, ct);
@@ -26,7 +26,7 @@ public class GetBestStoriesQueryHandler(
         if (request.Count.HasValue)
             bestStories = bestStories.Take(request.Count.Value);
 
-        return new GetBestStoriesQueryResult(bestStories);
+        return bestStories;
     }
 
     private async Task<IEnumerable<HackerNewsItem>> GetDetailedStoriesAsync(

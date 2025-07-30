@@ -11,8 +11,8 @@ namespace SantanderAscendion.Api.Controllers;
 public class HackerNewsController(IMediator mediator) : ControllerBase
 {
     [HttpGet("best-stories")]
-    [ProducesResponseType(typeof(GetBestStoriesQueryResult), StatusCodes.Status200OK)]
-    public Task<GetBestStoriesQueryResult> GetBestStories(
+    [ProducesResponseType(typeof(IEnumerable<StoryItem>), StatusCodes.Status200OK)]
+    public Task<IEnumerable<StoryItem>> GetBestStories(
         [FromQuery] GetBestStoriesQuery query,
         CancellationToken ct = default)
     {
