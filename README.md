@@ -9,7 +9,9 @@ Any phrase that contains "santander" word will pass validation:
 - Santander - OK
 - 123ggg4445h - NO OK
 
-## Use hosted instance on Azure
+## Hosted instance on Azure
+
+May require couple seconds to load, after inactivity period.  
 <https://vrzasqsantanderascendion.azurewebsites.net/swagger>
 
 ## Docker
@@ -18,7 +20,7 @@ Any phrase that contains "santander" word will pass validation:
     docker run -d -p 5000:8080 vrzasq/santanderascendion
    ```
 
-app will be available at <http://localhost:5000/swagger>
+Api will be available at <http://localhost:5000/swagger>
 
 ## Build from source
 
@@ -30,7 +32,7 @@ Clone git repository and from the root directory of a solution run following scr
     dotnet run --project .\src\Services\SantanderAscendion\SantanderAscendion.Api\SantanderAscendion.Api.csproj -c Release
    ```
 
-   Application should be available at default address <http://localhost:5176/swagger>
+   Application will be available at default address <http://localhost:5176/swagger>
 
 # Assumptions
 
