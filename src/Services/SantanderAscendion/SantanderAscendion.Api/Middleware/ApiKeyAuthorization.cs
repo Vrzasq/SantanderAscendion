@@ -23,7 +23,9 @@ public class ApiKeyAuthorization(RequestDelegate next)
             return;
         }
 
-        if (!apiKeyHeader.Contains("santander"))
+        string apiKey = apiKeyHeader.ToString();
+
+        if (!apiKey.Contains("santander", StringComparison.InvariantCultureIgnoreCase))
         {
             context.Response.StatusCode = StatusCodes.Status401Unauthorized;
             await context.Response.WriteAsync("API Key is invalid.");
