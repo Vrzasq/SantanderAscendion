@@ -1,0 +1,7 @@
+@SantanderAscendion.Api_HostAddress = http://localhost:5176/api
+
+GET {{SantanderAscendion.Api_HostAddress}}/hackernews/best-stories?count=2
+Accept: application/json
+x-api-key: test
+  
+###
