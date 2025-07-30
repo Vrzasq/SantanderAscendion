@@ -51,5 +51,5 @@ Clone git repository and from the root directory of a solution run following scr
 - Logging could be configurable from appsettings for example to disable or enable logging request and response payload
 - Seq or ElasticSearch could be added as log sinks
 - Custom resilience strategy for httpClient instead of standard one
-- Api key should be put in KeyVault / GitHub Secrets or similar solution depending on hosing platform
+- Api key should be put in KeyVault / GitHub Secrets or similar solution depending on hosting platform
 - Add UnitTest project
