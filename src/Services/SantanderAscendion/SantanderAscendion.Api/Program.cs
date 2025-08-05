@@ -68,6 +68,16 @@ builder.Services.AddSerilog((sp, cl) =>
 });
 
 builder.Services.AddApplication(builder.Configuration);
+builder.Services.AddOutputCache(configure =>
+{
+    configure.AddBasePolicy(policy =>
+    {
+        policy.Cache();
+        policy.Expire(TimeSpan.FromMinutes(1));
+    });
+});
+
+builder.Services.AddResponseCompression();
 
 var app = builder.Build();
 app.UseSerilogRequestLogging();
@@ -78,6 +88,8 @@ app.UseSwaggerUI(setup =>
     setup.DisplayRequestDuration();
 });
 
+app.UseOutputCache();
+app.UseResponseCompression();
 app.UseApiKeyAuthorization();
 app.MapControllers();
 app.Run();

@@ -1,9 +1,11 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.OutputCaching;
 using SantanderAscendion.Application.Queries.GetBestStories;
 
 namespace SantanderAscendion.Api.Controllers;
 
+[OutputCache]
 [ApiController]
 [Route("api/[controller]")]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
